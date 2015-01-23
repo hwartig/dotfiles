@@ -1,0 +1,27 @@
+[submodule "janus/vim-abolish"]
+	path = janus/vim-abolish
+	url = git@github.com:tpope/vim-abolish.git
+[submodule "janus/pig.vim"]
+	path = janus/pig.vim
+	url = git@github.com:motus/pig.vim
+[submodule "janus/bootstrap-snippets"]
+	path = janus/bootstrap-snippets
+	url = git@github.com:bonsaiben/bootstrap-snippets.git
+[submodule "janus/vim-colors-github"]
+	path = janus/vim-colors-github
+	url = git@github.com:croaky/vim-colors-github.git
+[submodule "janus/vim-go"]
+	path = janus/vim-go
+	url = git@github.com:fatih/vim-go.git
+[submodule "janus/vim-rubocop"]
+	path = janus/vim-rubocop
+	url = git@github.com:ngmy/vim-rubocop.git
+[submodule "janus/vim-simpledb"]
+	path = janus/vim-simpledb
+	url = git@github.com:ivalkeen/vim-simpledb.git
+[submodule "janus/vim-seeing-is-believing"]
+	path = janus/vim-seeing-is-believing
+	url = git@github.com:hwartig/vim-seeing-is-believing
+[submodule "oh-my-fish/custom/virtualfish"]
+	path = oh-my-fish/custom/virtualfish
+	url = git@github.com:adambrenecki/virtualfish.git

@@ -1,0 +1,54 @@
+alias ll='ls -lh'
+alias lla='ls -alhF'
+alias la='ls -A'
+alias l='ls'
+
+alias install='sudo apt-get -y install'
+alias search='apt-cache search'
+alias purge='sudo apt-get purge'
+alias files='dpkg -L'
+alias rgrep='grep -R --color=auto'
+
+alias vim='vim -p'
+alias vi='vim -p'
+
+# use hub in favor of git
+alias git="hub"
+alias gti="hub"
+alias gi="hub"
+
+#alias j='cd ~/Develop/job'
+#alias p='cd ~/Develop/job/photos'
+#alias m='cd ~/Develop/job/mon'
+#alias s='cd ~/Develop/job/likedby'
+#alias ys='cd ~/Develop/yeti/yeti-service'
+alias lls='cd ~/Develop/localleads'
+alias lo='cd ~/Develop/yeti/lokali'
+#alias ct='cd ~/Develop/ruby/mvp-call-tracking'
+alias d='cd ~/Develop/'
+#alias pl='cd /opt/play/'
+#alias ta='cd ~/Develop/job/jess/tailbee'
+alias ad='cd ~/Develop/ad2games'
+alias a2g='cd ~/Develop/a2g'
+alias ap='cd ~/Develop/applift'
+
+alias log='vim /Volumes/Store\ HD/Dropbox/hflog.md'
+alias glyl='j; git log --after="30 hours ago" --committer="Harald" --pretty=format:"* \`%h\` %s"; cd -'
+alias glyp='p; git log --after="30 hours ago" --reverse --committer="Harald" --pretty=format:"* \`%h\` %s"; cd -'
+alias glyy='ys; git log --after="30 hours ago" --reverse --committer="Harald" --pretty=format:"* \`%h\` %s"; cd -'
+alias gly='git log -g --after="30 hours ago" --committer="Harald" --pretty=format:"* \`%h\` %s";'
+alias gl="git log --graph --pretty=format:'%s - %Cred%h%Creset  %Cgreen(%cr)%Creset %an' --abbrev-commit --date=relative"
+alias cmpmaster='git log (git symbolic-ref -q HEAD) --not master --pretty=oneline --abbrev-commit --decorate'
+
+alias markdown2pdf="markdown2pdf --xetex"
+
+alias b="bundle"
+alias bi="bundle install -j8"
+alias bo="bundle open"
+alias bx="bundle exec"
+alias bxr="bundle exec rake"
+alias bxc="bundle exec cap"
+
+alias parse_git_branch_with_brackets='__git_ps1 %s'
+
+alias pigl='pig -x local'

@@ -1,0 +1,2 @@
+#!/bin/bash
+curl http://whatthecommit.com |head -n 40 |tail -n1 |cut -d '>' -f2

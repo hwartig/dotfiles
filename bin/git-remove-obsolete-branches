@@ -1,0 +1,4 @@
+#!/bin/bash
+
+git co master
+git branch --merged | grep -v "^* " | awk '{print "git branch -d " $1 "; git push origin :" $1}' | sh

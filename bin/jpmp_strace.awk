@@ -1,0 +1,1 @@
+BEGIN { s = "" } /^"/ { if (s) print s; s = "" } /^	at / { sub(/\([^)]*\)?$/, "", $2); sub(/^java/, "j", $2); if (s) s = s "," $2; else s = $2 } END { if(s) print s }

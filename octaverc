@@ -1,0 +1,2 @@
+setenv("GNUTERM","X11")
+addpath('~/Documents/coursera/ml/octave')

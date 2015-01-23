@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+sudo -v
+pv /Users/harry/Develop/ad2games/DashboardPI.img.gz | gunzip | sudo dd of=/dev/rdisk2 bs=1m

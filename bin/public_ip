@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+# also possible but slower
+#curl ifconfig.me
+#curl ipinfo.io
+
+wget -q -O - checkip.dyndns.org|sed -e 's/.*Current IP Address: //' -e 's/<.*$//'
+
+

@@ -1,0 +1,70 @@
+#!/usr/bin/env bash
+
+# taken from http://stackoverflow.com/questions/19570644/rspec-script-to-upgrade-from-should-to-expect-syntax
+
+# see also http://jakeboxer.com/blog/2012/07/09/converting-to-the-new-rspec-2-dot-11-expectation-syntax/
+# for additional steps
+
+# dissallow should from the specs
+
+# RSpec.configure do |config|
+#   # .. other stuff
+#
+#   # Add all three of these lines:
+#   config.expect_with :rspec do |c|
+#     c.syntax = :expect
+#   end
+#
+#   # .. other stuff
+# end
+
+filenum=1
+find . -type f -name '*_spec.rb' | while read file; do
+  #mkdir -p ../_spec_seded/"${file%/*}"
+  #echo "next file...$filenum...$file"
+  let filenum+=1
+  #cp "$file" ../_spec_seded/"$file"
+
+  gsed -i '                          # Exclude:
+/^ *describe .*do/! {                # -describe...do descriptions
+  /^ *it .*do/! {                    # -it...do descriptions
+    /^[[:blank:]]*\#/! {             # -comments
+      /^ *def .*\.should.*/! {       # -inline methods
+        /\.should/ {
+          s/\.should/)\.to/                      # Change .should to .to
+          s/\(\S\)/expect(\1/                    # Add expect( at start of line.
+          /\.to\( \|_not \)>\=/ s/>\=/be >\=/    # Change operators for
+          /\.to\( \|_not \)>[^=]/ s/>/be >/      # >, >=, <, <= and !=
+          /\.to\( \|_not \)<\=/ s/<\=/be <\=/
+          /\.to\( \|_not \)<[^=]/ s/</be </
+          /\.to\( \|_not \)\!\=/ s/\!\=/be \!\=/
+        }
+
+        /\.to +==\( +\|$\)/ s/==/eq/
+        /=\~/ {                                      # Change match operator
+          s/=\~/match(/
+          s/$/ )/
+          s/\[ )$/\[/
+        }
+
+        s/[^}.to|end.to]\.to /).to /                 # Add paren
+        /eq ({.*} )/ s/ ({/ ( {/                     # Add space
+        /to\(_\|_not_\)receive/ s/_receive/ receive/ # receive
+        /\.to eq \[.*\]/ {
+          s/ eq \[/ match_array([/
+          s/\]$/\])/
+        }
+
+        /expect.*(.*lambda.*{.*})/ {                 # Remove unneeded lambdas
+          s/( *lambda *{/{/
+          s/ })\.to / }\.to /
+        }
+
+        /expect *{ *.*(.*) *})\.to/ {                  # Fix extra end paren
+          s/})\.to/}\.to/
+        }
+      }
+    }
+  }
+}' "$file"
+done
