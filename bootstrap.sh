@@ -30,6 +30,7 @@ homebrew/versions
 
 brew_packages="
 autojump
+awscli
 curl
 fish
 gnu-sed
@@ -75,10 +76,13 @@ cheatsheet
 cyberduck
 colloquy
 daisydisk
+dropbox
 filezilla
 firefox
 gas-mask
 github
+google-chrome
+google-drive
 handbrake
 hipchat
 intellij-idea
@@ -98,6 +102,7 @@ rstudio
 screenhero
 sequel-pro
 shortcat
+skitch
 skype
 soulver
 soundflower
