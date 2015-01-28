@@ -9,7 +9,8 @@ set fish_greeting ""
 
 set -x EDITOR /usr/local/bin/vim
 set -x GOPATH ~/Develop/gopath
-
+set -x LC_ALL en_US.UTF-8
+set -x LANG en_US.UTF-8
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-fish/plugins/*)
 # Custom plugins may be added to ~/.oh-my-fish/custom/plugins/
