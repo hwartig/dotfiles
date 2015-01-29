@@ -91,6 +91,7 @@ java
 jdownloader
 keycastr
 kitematic
+licecap
 linein
 mou
 obs
