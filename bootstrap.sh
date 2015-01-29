@@ -202,3 +202,8 @@ case "$SHELL" in
     ;;
 esac
 
+if [ -e "$HOME/Develop" ]; then
+  find "$HOME/Develop" -name '.git' -execdir git fetch --all \;
+else
+  mkdir "$HOME/Develop"
+fi
