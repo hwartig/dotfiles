@@ -35,7 +35,9 @@ curl
 fish
 gnu-sed
 go
+hg
 htop-osx
+httpie
 httrack
 hub
 jq
@@ -46,6 +48,8 @@ mongodb
 mysql
 ohcount
 p7zip
+parallel
+pv
 pwgen
 python
 q
@@ -54,6 +58,7 @@ postgresql
 R
 rbenv
 reattach-to-user-namespace
+redis
 ruby-build
 siege
 the_silver_searcher
