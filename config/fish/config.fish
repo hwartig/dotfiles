@@ -18,7 +18,7 @@ set -x LANG en_US.UTF-8
 
 set fish_plugins localhost extract brew rbenv
 
-. /usr/local/etc/autojump.fish
+. /usr/local/share/autojump/autojump.fish
 
 # Path to your custom folder (default path is $FISH/custom)
 #set fish_custom $HOME/dotfiles/oh-my-fish
