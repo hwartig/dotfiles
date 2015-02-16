@@ -1,0 +1,7 @@
+#!/bin/bash
+
+# This is a short snippet to count duplicate lines in a tsv file.
+#
+# It will deduplicate lines in the input and prepend a column that contains the
+# count how often the particular line occured in the input.
+sort | uniq -c | gsed -r 's/^ *([0-9]+) /\1\t/'
