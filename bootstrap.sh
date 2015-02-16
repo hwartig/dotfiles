@@ -31,6 +31,7 @@ homebrew/versions
 brew_packages="
 autojump
 awscli
+boot2docker
 curl
 fish
 gnu-sed
