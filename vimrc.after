@@ -7,6 +7,8 @@ map <Leader>sc :tabe db/schema.rb<CR>
 map <Leader>ro :tabe config/routes.rb<CR>
 map <Leader>fg :tabe spec/factories/
 
+au FileType ruby map <Leader>rs :VroomRunTestFile<CR>
+
 au BufNewFile,BufRead *.txt set autoread
 
 " Gvim
