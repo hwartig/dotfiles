@@ -1,3 +1,4 @@
 set shell=bash
 let mapleader = ","
 let g:ruby_path = system('echo $HOME/.rbenv/shims')
+"let g:vroom_use_spring = 1
