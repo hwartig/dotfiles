@@ -29,6 +29,7 @@ homebrew/versions
 "
 
 brew_packages="
+R
 autojump
 awscli
 boot2docker
@@ -36,31 +37,35 @@ curl
 fish
 gnu-sed
 go
+graphviz
 hg
 htop-osx
 httpie
 httrack
 hub
+imagemagick
 jq
 legit
-imagemagick
 memcached
 mongodb
+mono
 mysql
+node
 ohcount
 p7zip
 parallel
+postgresql
 pv
 pwgen
 python
 q
 qt
-postgresql
-R
 rbenv
 reattach-to-user-namespace
 redis
 ruby-build
+sdl
+sdl2
 siege
 the_silver_searcher
 thrift
@@ -73,14 +78,15 @@ youtube-dl
 "
 
 cask_packages="
-anvil
 airparrot
+anvil
+caffeine
 cakebrew
 calibre
-caffeine
+cfxr
 cheatsheet
-cyberduck
 colloquy
+cyberduck
 daisydisk
 dropbox
 filezilla
@@ -101,6 +107,7 @@ licecap
 linein
 mou
 obs
+psequel
 razorsql
 rescuetime
 retroshare
@@ -116,8 +123,10 @@ soundflower
 spectacle
 teamviewer
 totalfinder
+transmission
 vagrant
 virtualbox
+wineskin-winery
 xquartz
 "
 
