@@ -146,7 +146,7 @@ vimrc.before
 "
 
 brew update
-brew upgrade
+brew upgrade --all
 
 for brew_tap in $brew_taps; do
   brew tap $brew_tap
