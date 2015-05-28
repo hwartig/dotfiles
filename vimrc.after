@@ -15,13 +15,13 @@ au BufNewFile,BufRead *.txt set autoread
 "nmap <Leader>r <Plug>(seeing-is-believing-run)
 "xmap <Leader>r <Plug>(seeing-is-believing-run)
 "imap <Leader>r <Plug>(seeing-is-believing-run)
-"nmap <buffer> <C-j> <Plug>(seeing-is-believing-run)
-"imap <buffer> <C-j> <Plug>(seeing-is-believing-run)
-"xmap <buffer> <C-j> <Plug>(seeing-is-believing-run)
+nmap <buffer> <C-j> <Plug>(seeing-is-believing-run)
+imap <buffer> <C-j> <Plug>(seeing-is-believing-run)
+xmap <buffer> <C-j> <Plug>(seeing-is-believing-run)
 
-"nmap <buffer> <C-k> <Plug>(seeing-is-believing-mark)
-"xmap <buffer> <C-k> <Plug>(seeing-is-believing-mark)
-"imap <buffer> <C-k> <Plug>(seeing-is-believing-mark)
+nmap <buffer> <C-k> <Plug>(seeing-is-believing-mark)
+xmap <buffer> <C-k> <Plug>(seeing-is-believing-mark)
+imap <buffer> <C-k> <Plug>(seeing-is-believing-mark)
 
 nmap <C-s> :w<CR>
 xmap <C-s> :w<CR>
