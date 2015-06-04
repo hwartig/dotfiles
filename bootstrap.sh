@@ -30,6 +30,7 @@ homebrew/versions
 
 brew_packages="
 R
+apache-spark
 autojump
 awscli
 boot2docker
@@ -46,6 +47,7 @@ hub
 imagemagick
 jq
 legit
+maven
 memcached
 mongodb
 mono
@@ -64,6 +66,7 @@ rbenv
 reattach-to-user-namespace
 redis
 ruby-build
+sbt
 sdl
 sdl2
 siege
