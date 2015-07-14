@@ -95,11 +95,13 @@ dropbox
 filezilla
 firefox
 gas-mask
+gimp
 github
 google-chrome
 google-drive
 handbrake
 hipchat
+inkscape
 intellij-idea
 iterm2
 java
