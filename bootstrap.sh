@@ -51,11 +51,11 @@ maven
 memcached
 mongodb
 mono
+moreutils
 mysql
 node
 ohcount
 p7zip
-parallel
 postgresql
 pv
 pwgen
