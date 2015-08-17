@@ -81,7 +81,6 @@ youtube-dl
 "
 
 cask_packages="
-airparrot
 anvil
 caffeine
 cakebrew
