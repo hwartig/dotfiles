@@ -3,14 +3,10 @@ alias lla='ls -alhF'
 alias la='ls -A'
 alias l='ls'
 
-alias install='sudo apt-get -y install'
-alias search='apt-cache search'
-alias purge='sudo apt-get purge'
-alias files='dpkg -L'
 alias rgrep='grep -R --color=auto'
 
-alias vim='vim -p'
 alias vi='vim -p'
+alias vim='vim -p'
 
 # use hub in favor of git
 alias git="hub"

@@ -31,7 +31,7 @@ imap <C-s> <ESC>:w<CR>
 nmap <Tab> :b#<CR>
 let g:ackprg = 'ag --nogroup --nocolor --column'
 
-set colorcolumn=80
+set colorcolumn=100
 highlight ColorColumn ctermbg=8
 
 set clipboard=unnamed
