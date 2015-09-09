@@ -1,0 +1,6 @@
+theme robbyrussell
+package rbenv
+package brew
+package extract
+package https://github.com/oh-my-fish/plugin-localhost
+package osx

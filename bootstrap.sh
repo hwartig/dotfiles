@@ -142,7 +142,7 @@ githelpers
 gitignore
 janus
 octaverc
-oh-my-fish/custom
+omf
 parallel
 tmux.conf
 vimrc.after
@@ -178,18 +178,17 @@ git submodule init
 git submodule update
 
 # Install or update oh-my-fish
-if [ -e "$HOME/.oh-my-fish" ]; then
-  cd "$HOME/.oh-my-fish"
-    git fetch
-    git reset origin master
-  cd -
+if [ -e "${HOME}/.config/omf" ]; then
+  omf update
 else
-  curl -L https://github.com/bpinto/oh-my-fish/raw/master/tools/install.fish | fish
+  # set CI env variable so omf installation doesn't swap processes
+  CI=true curl -L github.com/oh-my-fish/oh-my-fish/raw/master/bin/install | sh
+  omf update
 fi
 
 # Remove some files oh-my-fish installation already created
 rm -r ~/.config/fish
-rm -r ~/.oh-my-fish/custom
+rm -r ~/.config/omf
 
 fancy_echo "Creating Symlinks"
 for file in $files_to_symlink; do

@@ -22,6 +22,3 @@
 [submodule "janus/vim-seeing-is-believing"]
 	path = janus/vim-seeing-is-believing
 	url = git@github.com:hwartig/vim-seeing-is-believing
-[submodule "oh-my-fish/custom/virtualfish"]
-	path = oh-my-fish/custom/virtualfish
-	url = git@github.com:adambrenecki/virtualfish.git
