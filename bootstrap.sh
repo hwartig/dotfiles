@@ -126,7 +126,6 @@ soulver
 soundflower
 spectacle
 teamviewer
-totalfinder
 transmission
 vagrant
 virtualbox
