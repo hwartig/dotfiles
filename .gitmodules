@@ -1,9 +1,6 @@
 [submodule "janus/vim-abolish"]
 	path = janus/vim-abolish
 	url = git@github.com:tpope/vim-abolish.git
-[submodule "janus/pig.vim"]
-	path = janus/pig.vim
-	url = git@github.com:motus/pig.vim
 [submodule "janus/bootstrap-snippets"]
 	path = janus/bootstrap-snippets
 	url = git@github.com:bonsaiben/bootstrap-snippets.git
