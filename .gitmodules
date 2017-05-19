@@ -19,3 +19,9 @@
 [submodule "janus/vim-seeing-is-believing"]
 	path = janus/vim-seeing-is-believing
 	url = git@github.com:hwartig/vim-seeing-is-believing
+[submodule "janus/emmet-vim"]
+	path = janus/emmet-vim
+	url = git@github.com:mattn/emmet-vim.git
+[submodule "janus/vim-autoread"]
+	path = janus/vim-autoread
+	url = git@github.com:djoshea/vim-autoread.git
