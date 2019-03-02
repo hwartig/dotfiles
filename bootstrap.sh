@@ -18,206 +18,57 @@ gem_install_or_update() {
   fi
 }
 
-ruby_version=2.2.0
+sudo -v
 
-brew_taps="
-caskroom/cask
-homebrew/dupes
-homebrew/python
-homebrew/science
-homebrew/versions
-"
+fancy_echo "Setting up your Mac..."
 
-brew_packages="
-R
-apache-spark
-autojump
-awscli
-boot2docker
-curl
-fish
-gnu-sed
-go
-graphviz
-hg
-htop-osx
-httpie
-httrack
-hub
-imagemagick
-jq
-legit
-maven
-memcached
-mongodb
-mono
-moreutils
-mysql
-node
-ohcount
-p7zip
-postgresql
-pv
-pwgen
-python
-q
-qt
-rbenv
-reattach-to-user-namespace
-redis
-ruby-build
-sbt
-sdl
-sdl2
-siege
-the_silver_searcher
-thrift
-tig
-tmux
-tree
-vim
-wget
-youtube-dl
-"
+# Check for Homebrew and install if we don't have it
+if test ! $(which brew); then
+  fancy_echo "Couldn't find Homebrew... so lets install it"
+  /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+fi
 
-cask_packages="
-anvil
-caffeine
-cakebrew
-calibre
-cfxr
-cheatsheet
-colloquy
-cyberduck
-daisydisk
-dropbox
-filezilla
-firefox
-gas-mask
-gimp
-github
-google-chrome
-google-drive
-handbrake
-hipchat
-inkscape
-intellij-idea
-iterm2
-java
-jdownloader
-keycastr
-kitematic
-licecap
-linein
-mou
-obs
-psequel
-razorsql
-rescuetime
-retroshare
-robomongo
-rstudio
-screenhero
-sequel-pro
-shortcat
-skitch
-skype
-soulver
-soundflower
-spectacle
-teamviewer
-transmission
-vagrant
-virtualbox
-wineskin-winery
-xquartz
-"
+fancy_echo "Update Homebrew and install Brewfile dependencies"
 
-files_to_symlink="
-agignore
-config/fish
-gitconfig
-githelpers
-gitignore
-janus
-octaverc
-omf
-parallel
-tmux.conf
-vimrc.after
-vimrc.before
-"
-
+# Update Homebrew recipes
 brew update
-brew upgrade --all
 
-for brew_tap in $brew_taps; do
-  brew tap $brew_tap
-done
-
-for brew_package in $brew_packages; do
-  brew install $brew_package
-done
-
-brew install caskroom/cask/brew-cask
-
-for cask_package in $cask_packages; do
-  brew cask install $cask_package
-done
+# Install all our dependencies with bundle (See Brewfile)
+brew tap homebrew/bundle
+brew bundle
 
 # Install or update Janus
-if [ -e "$HOME/.vim" ]; then
+if [ -e "$HOME/.vim/janus" ]; then
+  fancy_echo "Updating Janus"
   cd "$HOME/.vim"
     rake
   cd -
 else
-  curl -Lo- https://bit.ly/janus-bootstrap | bash
+  fancy_echo "Installing Janus"
+  curl -L https://bit.ly/janus-bootstrap | bash
 fi
-git submodule init
-git submodule update
 
 # Install or update oh-my-fish
-if [ -e "${HOME}/.config/omf" ]; then
-  omf update
-else
+if [ ! -e "${HOME}/.config/omf" ]; then
   # set CI env variable so omf installation doesn't swap processes
-  CI=true curl -L github.com/oh-my-fish/oh-my-fish/raw/master/bin/install | sh
-  omf update
+  CI=true curl -L https://get.oh-my.fish | fish
+
+  fancy_echo "Changing your shell to fish ..."
+  sudo sh -c "echo `which fish` >> /etc/shells"
+  chsh -s `which fish`
 fi
 
-# Remove some files oh-my-fish installation already created
-rm -r ~/.config/fish
-rm -r ~/.config/omf
+fancy_echo "Restoring mackup"
 
-fancy_echo "Creating Symlinks"
-for file in $files_to_symlink; do
-  ln -sfFh ~/.dotfiles/$file ~/.$file
-done
-
-eval "$(rbenv init - )"
-
-if ! rbenv versions | grep -Fq "$ruby_version"; then
-  rbenv install -s "$ruby_version"
+if [ ! -e "${HOME}/.mackup.cfg" ]; then
+  ln -sfFh $HOME/.dotfiles/.mackup.cfg $HOME/.mackup.cfg
 fi
+mackup restore
 
-rbenv global "$ruby_version"
-rbenv shell "$ruby_version"
-
-gem update --system
-
-gem_install_or_update 'bundler'
-
-fancy_echo "Configuring Bundler ..."
-  number_of_cores=$(sysctl -n hw.ncpu)
-  bundle config --global jobs $((number_of_cores - 1))
-
-case "$SHELL" in
-  */fish) : ;;
-  *)
-    fancy_echo "Changing your shell to fish ..."
-      chsh -s "$(which fish)"
-    ;;
-esac
+`which fish`<<UPDATE_OMF
+omf update
+omf install
+UPDATE_OMF
 
 if [ -e "$HOME/Develop" ]; then
   find "$HOME/Develop" -name '.git' -execdir git fetch --all \;
