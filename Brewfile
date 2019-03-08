@@ -80,6 +80,7 @@ cask 'qlstephen'
 # Fonts
 cask 'font-lato'
 cask 'font-open-sans'
+cask 'font-fira-code'
 cask 'font-roboto'
 
 mas "DaisyDisk", id: 411643860
