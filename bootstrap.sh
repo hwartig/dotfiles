@@ -48,7 +48,7 @@ else
   curl -L https://bit.ly/janus-bootstrap | bash
 fi
 
-# Install or update oh-my-fish
+# Install oh-my-fish
 if [ ! -e "${HOME}/.config/omf" ]; then
   # set CI env variable so omf installation doesn't swap processes
   CI=true curl -L https://get.oh-my.fish | fish
@@ -56,6 +56,11 @@ if [ ! -e "${HOME}/.config/omf" ]; then
   fancy_echo "Changing your shell to fish ..."
   sudo sh -c "echo `which fish` >> /etc/shells"
   chsh -s `which fish`
+fi
+
+if [ ! -e "${HOME}/.fnm" ]; then
+  fancy_echo "Installing node version manager 'fnm'"
+  curl https://raw.githubusercontent.com/Schniz/fnm/master/.ci/install.sh | bash -s -- --skip-shell
 fi
 
 fancy_echo "Restoring mackup"
