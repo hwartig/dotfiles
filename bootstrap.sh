@@ -76,7 +76,7 @@ omf install
 UPDATE_OMF
 
 if [ -e "$HOME/Develop" ]; then
-  find "$HOME/Develop" -name '.git' -execdir git fetch --all \;
+  find "$HOME/Develop" -name '.git' -not -path "*node_modules*" -execdir pwd \; -execdir git fetch --all \;
 else
   mkdir "$HOME/Develop"
 fi
