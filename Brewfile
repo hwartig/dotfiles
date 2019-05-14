@@ -49,6 +49,7 @@ brew "vim"
 brew "wget"
 brew "youtube-dl"
 
+cask "anki"
 cask "caffeine"
 cask "cheatsheet"
 cask "cyberduck"
