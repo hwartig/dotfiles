@@ -60,7 +60,7 @@ fi
 
 if [ ! -e "${HOME}/.fnm" ]; then
   fancy_echo "Installing node version manager 'fnm'"
-  curl https://raw.githubusercontent.com/Schniz/fnm/master/.ci/install.sh | bash -s -- --skip-shell
+  curl -fsSL https://github.com/Schniz/fnm/raw/master/.ci/install.sh | bash -s -- --skip-shell
 fi
 
 fancy_echo "Restoring mackup"
