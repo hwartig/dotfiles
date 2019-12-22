@@ -3,8 +3,8 @@ tap "homebrew/cask"
 tap "homebrew/cask-fonts"
 tap "homebrew/core"
 
-# needed for sbt
-cask "java"
+cask "adoptopenjdk" # needed for sbt
+# you might need to run: brew cask reinstall --no-quarantine adoptopenjdk
 brew "R"
 brew "autojump"
 brew "awscli"
