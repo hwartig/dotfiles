@@ -88,7 +88,7 @@ cask 'font-open-sans'
 cask 'font-fira-code'
 cask 'font-roboto'
 
+mas "1Password 7", id: 1333542190
 mas "DaisyDisk", id: 411643860
 mas "Day One Classic", id: 422304217
-mas "LastPass", id: 926036361
 mas "MindNode 5", id: 1289197285
