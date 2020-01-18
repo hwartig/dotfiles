@@ -49,7 +49,7 @@ else
 fi
 
 # Install oh-my-fish
-if [ ! -e "${HOME}/.config/omf" ]; then
+if [ ! -e "${HOME}/.local/share/omf" ]; then
   # set CI env variable so omf installation doesn't swap processes
   CI=true curl -L https://get.oh-my.fish | fish
 
