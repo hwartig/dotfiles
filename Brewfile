@@ -91,4 +91,7 @@ cask 'font-roboto'
 mas "1Password 7", id: 1333542190
 mas "DaisyDisk", id: 411643860
 mas "Day One Classic", id: 422304217
+mas "Keynote", id: 409183694
 mas "MindNode 5", id: 1289197285
+mas "Numbers", id: 409203825
+mas "Pages", id: 409201541
