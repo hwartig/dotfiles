@@ -58,11 +58,6 @@ if [ ! -e "${HOME}/.local/share/omf" ]; then
   chsh -s `which fish`
 fi
 
-if [ ! -e "${HOME}/.fnm" ]; then
-  fancy_echo "Installing node version manager 'fnm'"
-  curl -fsSL https://github.com/Schniz/fnm/raw/master/.ci/install.sh | bash -s -- --force-install --skip-shell
-fi
-
 fancy_echo "Restoring mackup"
 
 if [ ! -e "${HOME}/.mackup.cfg" ]; then
