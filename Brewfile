@@ -5,28 +5,22 @@ tap "homebrew/core"
 
 cask "adoptopenjdk" # needed for sbt
 # you might need to run: brew cask reinstall --no-quarantine adoptopenjdk
-brew "R"
 brew "autojump"
 brew "awscli"
-brew "boot2docker"
 brew "curl"
 brew "direnv"
 brew "fish"
 brew "ffmpeg"
 brew "go"
-brew "graphviz"
-brew "hg"
 brew "htop-osx"
 brew "httpie"
 brew "hub"
 brew "imagemagick"
 brew "jq"
 brew "legit"
-brew "memcached"
 brew "mackup"
 brew "mono"
 brew "moreutils"
-brew "mysql"
 brew "neovim"
 brew "node"
 brew "ohcount"
@@ -37,11 +31,9 @@ brew "pwgen"
 brew "python"
 brew "q"
 brew "rbenv"
-brew "redis"
 brew "ripgrep"
 brew "ruby-build"
 brew "sbt"
-brew "siege"
 brew "Schniz/tap/fnm"
 brew "the_silver_searcher"
 brew "tig"
@@ -72,7 +64,6 @@ cask "sketch"
 cask "soulver"
 cask "spectacle"
 cask "tripmode"
-cask "webstorm"
 cask "whatsapp"
 cask "zoomus"
 
@@ -81,7 +72,6 @@ cask 'qlcolorcode'
 cask 'qlmarkdown'
 cask 'quicklook-json'
 cask 'quicklook-csv'
-cask 'qlstephen'
 
 # Fonts
 cask 'font-lato'
