@@ -68,7 +68,6 @@ cask "whatsapp"
 cask "zoomus"
 
 # Quicklook
-cask 'qlcolorcode'
 cask 'qlmarkdown'
 cask 'quicklook-json'
 cask 'quicklook-csv'
