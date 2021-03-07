@@ -65,7 +65,7 @@ cask "soulver"
 cask "spectacle"
 cask "tripmode"
 cask "whatsapp"
-cask "zoomus"
+cask "zoom"
 
 # Quicklook
 cask 'qlmarkdown'
