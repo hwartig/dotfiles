@@ -56,6 +56,7 @@ cask "slack"
 cask "soulver"
 cask "spectacle"
 cask "whatsapp"
+cask "zettlr"
 cask "zoom"
 
 # Quicklook
