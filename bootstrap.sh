@@ -37,27 +37,6 @@ brew update
 brew tap homebrew/bundle
 brew bundle
 
-# Install or update Janus
-if [ -e "$HOME/.vim/janus" ]; then
-  fancy_echo "Updating Janus"
-  cd "$HOME/.vim"
-    rake
-  cd -
-else
-  fancy_echo "Installing Janus"
-  curl -L https://bit.ly/janus-bootstrap | bash
-fi
-
-# Install oh-my-fish
-if [ ! -e "${HOME}/.local/share/omf" ]; then
-  # set CI env variable so omf installation doesn't swap processes
-  CI=true curl -L https://get.oh-my.fish | fish
-
-  fancy_echo "Changing your shell to fish ..."
-  sudo sh -c "echo `which fish` >> /etc/shells"
-  chsh -s `which fish`
-fi
-
 fancy_echo "Restoring mackup"
 
 if [ ! -e "${HOME}/.mackup.cfg" ]; then
@@ -65,10 +44,9 @@ if [ ! -e "${HOME}/.mackup.cfg" ]; then
 fi
 mackup restore
 
-`which fish`<<UPDATE_OMF
-omf update
-omf install
-UPDATE_OMF
+`which fish`<<UPDATE_FISHER
+fisher update
+UPDATE_FISHER
 
 if [ -e "$HOME/Develop" ]; then
   find "$HOME/Develop" -name '.git' -not -path "*node_modules*" -execdir pwd \; -execdir git fetch --all \;
