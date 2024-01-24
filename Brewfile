@@ -2,6 +2,7 @@ tap "homebrew/bundle"
 tap "homebrew/cask"
 tap "homebrew/cask-fonts"
 tap "homebrew/core"
+tap "1password/tap/1password-cli"
 
 brew "autojump"
 brew "awscli"
@@ -40,10 +41,10 @@ brew "tldr"
 brew "tmux"
 brew "trash"
 brew "tree"
-brew "vim"
 brew "wget"
 brew "youtube-dl"
 
+cask "1password"
 cask "anki"
 cask "caffeine"
 cask "cheatsheet"
@@ -76,10 +77,12 @@ cask 'font-open-sans'
 cask 'font-fira-code'
 cask 'font-roboto'
 
-mas "1Password 7", id: 1333542190
 mas "DaisyDisk", id: 411643860
 mas "Day One Classic", id: 422304217
 mas "Keynote", id: 409183694
 mas "MindNode 5", id: 1289197285
 mas "Numbers", id: 409203825
 mas "Pages", id: 409201541
+mas "Speeko", id: 1071468459
+mas "Things", id: 904280696
+mas "TripMode", id: 1513400665
