@@ -1,6 +1,5 @@
 tap "homebrew/bundle"
 tap "homebrew/cask-fonts"
-tap "1password/tap/1password-cli"
 
 brew "autojump"
 brew "awscli"
@@ -43,6 +42,7 @@ brew "wget"
 brew "youtube-dl"
 
 cask "1password"
+cask "1password-cli"
 cask "anki"
 cask "caffeine"
 cask "cheatsheet"
