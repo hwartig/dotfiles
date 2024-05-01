@@ -1,0 +1,8 @@
+#!/usr/bin/env ruby
+require "Tempfile"
+
+file = Tempfile.create(["open",".html"])
+file.write(STDIN.read)
+file.flush
+
+`open #{file.path}`
