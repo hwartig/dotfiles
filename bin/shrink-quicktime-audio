@@ -1,0 +1,62 @@
+#!/usr/bin/env ruby
+require 'pathname'
+require 'oga'
+
+unless ARGV.size >= 1
+  puts "Provide the input file as the first argument"
+  exit 1
+end
+
+# inspired by https://ikyle.me/blog/2020/add-mp4-chapters-ffmpeg
+def process_file(input_path)
+  output_path = input_path.dirname.join(input_path.basename.sub(/ orig(inal)?\./i, '.'))
+  output_path = output_path.sub_ext(" processed#{output_path.extname}") if input_path == output_path
+
+  chapters_path = input_path.dirname.join(input_path.basename.sub(/orig(inal)?\.m4a/i, 'chapters.html'))
+
+  if chapters_path.exist?
+    metadata_path = input_path.dirname.join(input_path.basename.sub(/orig(inal)?\.m4a/i, 'metadata.txt'))
+
+    system(%Q{ffmpeg -i "#{input_path}" -f ffmetadata "#{metadata_path}"})
+
+    oga = Oga.parse_html(File.read(chapters_path))
+
+    chapters = oga.css("div.chapter-dialog-row-title").map(&:text).map(&:strip)
+    timings = oga.css("span.place-phrase-visual").map(&:text).map(&:strip)
+    chapters = chapters.zip(timings).map do |title, timing|
+      timing.split(":").map(&:to_i).reverse.yield_self do |seconds, minutes, hours = 0|
+        start = (hours * 3600 + minutes * 60 + seconds) * 1000
+        {
+          start: start,
+          title: title
+        }
+      end
+    end
+
+    audio_duration = `ffprobe -i "#{input_path}" -show_entries format=duration -v quiet -of csv="p=0"`.to_f * 1000
+
+    open(metadata_path, 'a') do |f|
+      chapters.each_with_index do |c, i|
+      end_time = chapters[i+1] ? chapters[i+1][:start] - 1 : audio_duration
+
+        f.puts"""
+[CHAPTER]
+TIMEBASE=1/1000
+START=#{c[:start]}
+END=#{end_time}
+title=#{c[:title]}
+"""
+      end
+    end
+
+    system(%Q{ffmpeg -i "#{input_path}" -i "#{metadata_path}" -map_metadata 1 -c:a aac "#{output_path}" && trash "#{metadata_path}" "#{input_path}" "#{chapters_path}"})
+  else
+    system(%Q{ffmpeg -i "#{input_path}" -c:a aac "#{output_path}" && trash "#{input_path}"})
+  end
+
+end
+
+ARGV.each do |arg|
+  input_path = Pathname.new(arg)
+  process_file(input_path)
+end
