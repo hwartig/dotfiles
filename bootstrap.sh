@@ -25,7 +25,8 @@ fancy_echo "Setting up your Mac..."
 # Check for Homebrew and install if we don't have it
 if test ! $(which brew); then
   fancy_echo "Couldn't find Homebrew... so lets install it"
-  /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
 fi
 
 fancy_echo "Update Homebrew and install Brewfile dependencies"
