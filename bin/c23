@@ -1,0 +1,5 @@
+#!/bin/bash
+OUTNAME="${1%.*}"
+$HOMEBREW_PREFIX/opt/llvm/bin/clang -gfull -std=c23 -Wall -Wextra -Wpedantic -o "$OUTNAME" $@
+#$HOMEBREW_PREFIX/opt/llvm/bin/clang -fprofile-arcs -ftest-coverage -O0 -gfull -std=c23 -Wall -Wextra -Wpedantic -o "$OUTNAME" $@
+

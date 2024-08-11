@@ -1,0 +1,6 @@
+#!/bin/bash
+OUTNAME=$(mktemp)
+$HOMEBREW_PREFIX/opt/llvm/bin/clang -O0 -gfull -std=c23 -Wall -Wextra -o "$OUTNAME" $@ && $OUTNAME
+#OUTNAME="${1%.*}"
+#$HOMEBREW_PREFIX/opt/llvm/bin/clang -fprofile-arcs -ftest-coverage -O0 -gfull -std=c23 -Wall -Wextra -o "$OUTNAME" $@ && ./$OUTNAME
+
