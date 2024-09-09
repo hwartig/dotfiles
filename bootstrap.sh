@@ -38,12 +38,12 @@ brew update
 brew tap homebrew/bundle
 brew bundle
 
-fancy_echo "Restoring mackup"
+#fancy_echo "Restoring mackup"
 
-if [ ! -e "${HOME}/.mackup.cfg" ]; then
-  ln -sfFh $HOME/.dotfiles/.mackup.cfg $HOME/.mackup.cfg
-fi
-mackup restore
+#if [ ! -e "${HOME}/.mackup.cfg" ]; then
+  #ln -sfFh $HOME/.dotfiles/.mackup.cfg $HOME/.mackup.cfg
+#fi
+#mackup restore
 
 `which fish`<<UPDATE_FISHER
 fisher update
