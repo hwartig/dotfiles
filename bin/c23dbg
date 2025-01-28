@@ -1,0 +1,10 @@
+#!/bin/bash
+OUTNAME="${1%.*}"
+CFLAGS="-std=c23 -Wall -Wextra -Wpedantic -gfull -fsanitize=address -fno-omit-frame-pointer" # -gfull -fprofile-arcs -ftest-coverage -O0
+# --save-temps
+
+if [ ! -f "$(PWD)/compile_flags.txt" ] && [ ! -f "$(pwd)/compile_commands.json" ]; then
+  echo "${CFLAGS// /$'\n'}" >"$(PWD)/compile_flags.txt"
+fi
+
+$HOMEBREW_PREFIX/opt/llvm/bin/clang $CFLAGS -o "$OUTNAME"dbg $@

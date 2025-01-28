@@ -1,6 +1,23 @@
 #!/bin/bash
 OUTNAME=$(mktemp)
-$HOMEBREW_PREFIX/opt/llvm/bin/clang -O0 -gfull -std=c23 -Wall -Wextra -o "$OUTNAME" $@ && $OUTNAME
-#OUTNAME="${1%.*}"
-#$HOMEBREW_PREFIX/opt/llvm/bin/clang -fprofile-arcs -ftest-coverage -O0 -gfull -std=c23 -Wall -Wextra -o "$OUTNAME" $@ && ./$OUTNAME
 
+CFLAGS="-std=c23 -Wall -Wextra -Wpedantic -fsanitize=address -fno-omit-frame-pointer"
+
+if [ ! -f "$(PWD)/compile_flags.txt" ] && [ ! -f "$(pwd)/compile_commands.json" ]; then
+  echo "${CFLAGS// /$'\n'}" >"$(PWD)/compile_flags.txt"
+fi
+
+COMPILE_ARGS=""
+RUN_ARGS=""
+
+for word in $@; do
+  if [ "$word" = "--" ]; then
+    RUN_ARGS+=" "
+  elif [ -n "$RUN_ARGS" ]; then
+    RUN_ARGS+="$word "
+  else
+    COMPILE_ARGS+="$word "
+  fi
+done
+
+$HOMEBREW_PREFIX/opt/llvm/bin/clang $CFLAGS -o "$OUTNAME" $COMPILE_ARGS && $OUTNAME $RUN_ARGS

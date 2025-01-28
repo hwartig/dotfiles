@@ -1,5 +1,9 @@
 #!/bin/bash
 OUTNAME="${1%.*}"
-$HOMEBREW_PREFIX/opt/llvm/bin/clang -gfull -std=c23 -Wall -Wextra -Wpedantic -o "$OUTNAME" $@
-#$HOMEBREW_PREFIX/opt/llvm/bin/clang -fprofile-arcs -ftest-coverage -O0 -gfull -std=c23 -Wall -Wextra -Wpedantic -o "$OUTNAME" $@
+CFLAGS="-std=c23 -O3 -Wall -Wextra -Wpedantic " # -fsanitize=address -fno-omit-frame-pointer
 
+if [ ! -f "$(PWD)/compile_flags.txt" ] && [ ! -f "$(pwd)/compile_commands.json" ]; then
+  echo "${CFLAGS// /$'\n'}" >"$(PWD)/compile_flags.txt"
+fi
+
+$HOMEBREW_PREFIX/opt/llvm/bin/clang $CFLAGS -o "$OUTNAME" $@
