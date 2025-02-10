@@ -1,14 +1,15 @@
 #!/bin/bash
 
 fancy_echo() {
-  local fmt="$1"; shift
+  local fmt="$1"
+  shift
 
   # shellcheck disable=SC2059
   printf "\n$fmt\n" "$@"
 }
 
 gem_install_or_update() {
-  if gem list "$1" --installed > /dev/null; then
+  if gem list "$1" --installed >/dev/null; then
     fancy_echo "Updating %s ..." "$1"
     gem update "$@"
   else
@@ -38,14 +39,7 @@ brew update
 brew tap homebrew/bundle
 brew bundle
 
-#fancy_echo "Restoring mackup"
-
-#if [ ! -e "${HOME}/.mackup.cfg" ]; then
-  #ln -sfFh $HOME/.dotfiles/.mackup.cfg $HOME/.mackup.cfg
-#fi
-#mackup restore
-
-`which fish`<<UPDATE_FISHER
+$(which fish) <<UPDATE_FISHER
 fisher update
 UPDATE_FISHER
 
