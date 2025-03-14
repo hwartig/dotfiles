@@ -1,7 +1,9 @@
-#!/bin/bash
+#!/usr/bin/env bash
 OUTNAME=$(mktemp)
 
 CFLAGS="-std=c23 -Wall -Wextra -Wpedantic -fsanitize=address -fno-omit-frame-pointer"
+# adding debug symbols so we have linenumber in asan output
+SANFLAGS="-fsanitize=address -fno-omit-frame-pointer -g"
 
 if [ ! -f "$(PWD)/compile_flags.txt" ] && [ ! -f "$(pwd)/compile_commands.json" ]; then
   echo "${CFLAGS// /$'\n'}" >"$(PWD)/compile_flags.txt"
@@ -20,4 +22,6 @@ for word in $@; do
   fi
 done
 
-$HOMEBREW_PREFIX/opt/llvm/bin/clang $CFLAGS -o "$OUTNAME" $COMPILE_ARGS && $OUTNAME $RUN_ARGS
+readarray -t -n0 ARGS <"$(PWD)/compile_flags.txt"
+
+$HOMEBREW_PREFIX/opt/llvm/bin/clang ${ARGS[*]} $SANFLAGS -o "$OUTNAME" $COMPILE_ARGS && $OUTNAME $RUN_ARGS

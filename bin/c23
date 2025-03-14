@@ -1,9 +1,12 @@
-#!/bin/bash
+#!/usr/bin/env bash
 OUTNAME="${1%.*}"
-CFLAGS="-std=c23 -O3 -Wall -Wextra -Wpedantic " # -fsanitize=address -fno-omit-frame-pointer
+CFLAGS="-std=c23 -Wall -Wextra -Wpedantic"
+CC=${CC:-$(which clang)}
 
 if [ ! -f "$(PWD)/compile_flags.txt" ] && [ ! -f "$(pwd)/compile_commands.json" ]; then
   echo "${CFLAGS// /$'\n'}" >"$(PWD)/compile_flags.txt"
 fi
 
-$HOMEBREW_PREFIX/opt/llvm/bin/clang $CFLAGS -o "$OUTNAME" $@
+readarray -t -n0 ARGS <"$(PWD)/compile_flags.txt"
+
+$CC ${ARGS[*]} -O3 -ffast-math -march=native -o "$OUTNAME" $@

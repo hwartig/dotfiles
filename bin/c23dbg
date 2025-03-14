@@ -1,10 +1,13 @@
-#!/bin/bash
+#!/usr/bin/env bash
 OUTNAME="${1%.*}"
-CFLAGS="-std=c23 -Wall -Wextra -Wpedantic -gfull -fsanitize=address -fno-omit-frame-pointer" # -gfull -fprofile-arcs -ftest-coverage -O0
-# --save-temps
+CFLAGS="-std=c23 -Wall -Wextra -Wpedantic"
+DBGFLAGS="-gfull -fsanitize=address -fno-omit-frame-pointer"
+# --save-temps -fprofile-arcs -ftest-coverage -O0
 
 if [ ! -f "$(PWD)/compile_flags.txt" ] && [ ! -f "$(pwd)/compile_commands.json" ]; then
   echo "${CFLAGS// /$'\n'}" >"$(PWD)/compile_flags.txt"
 fi
 
-$HOMEBREW_PREFIX/opt/llvm/bin/clang $CFLAGS -o "$OUTNAME"dbg $@
+readarray -t -n0 ARGS <"$(PWD)/compile_flags.txt"
+
+$HOMEBREW_PREFIX/opt/llvm/bin/clang ${ARGS[*]} $DBGFLAGS -o "$OUTNAME"dbg $@
