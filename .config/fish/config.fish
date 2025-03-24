@@ -35,16 +35,6 @@ alias n=nvim
 alias cl=commit-later
 alias https="http --default-scheme=https"
 
-alias space="op item get contentful.com --vault=Private --field label=space"
-alias organization="op item get contentful.com --vault=Private --field label=organization"
-alias cpa-token="op item get contentful.com --vault=Private --field label=cpa-token"
-alias cda-token="op item get contentful.com --vault=Private --field label=cda-token"
-alias cma-token="op item get contentful.com --vault=Private --field label=cma-token"
-alias cda="https -a (cda-token) -Abearer"
-alias cpa="https -a (cpa-token) -Abearer"
-alias cma="https -a (cma-token) -Abearer"
-alias gql="https -a (cda-token) -Abearer"
-
 #alias cmpmaster='git log (git symbolic-ref -q HEAD) --not master --pretty=oneline --abbrev-commit --decorate'
 
 #alias b="bundle"
