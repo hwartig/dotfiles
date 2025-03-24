@@ -45,11 +45,6 @@ alias cpa="https -a (cpa-token) -Abearer"
 alias cma="https -a (cma-token) -Abearer"
 alias gql="https -a (cda-token) -Abearer"
 
-## use hub in favor of git
-#alias git="hub"
-#alias gti="hub"
-#alias gi="hub"
-
 #alias cmpmaster='git log (git symbolic-ref -q HEAD) --not master --pretty=oneline --abbrev-commit --decorate'
 
 #alias b="bundle"
