@@ -34,6 +34,8 @@ alias vi=nvim
 alias n=nvim
 alias cl=commit-later
 alias https="http --default-scheme=https"
+alias brewi="cat ~/Library/Caches/Homebrew/api/formula_names.txt | fzf --bind 'enter:become(brew info {})'"
+alias brewif="cat ~/Library/Caches/Homebrew/api/formula_names.txt | fzf --bind 'enter:execute(jq \".payload | fromjson | .[] | select(.name == \\\\"{}\\\\") | .name, .full_name, .desc, .homepage, .license, .versions.stable, .installed, .deprecated\" ~/Library/Caches/Homebrew/api/formula.jws.json)'"
 
 #alias cmpmaster='git log (git symbolic-ref -q HEAD) --not master --pretty=oneline --abbrev-commit --decorate'
 
