@@ -1,0 +1,95 @@
+[user]
+	name = Harald Wartig
+	email = hwartig@gmail.com
+[color]
+	ui = 1
+[github]
+	user = hwartig
+[alias]
+	d  = diff
+	dc = diff --cached
+	cm = commit -m
+	ca = commit --amend
+	co = checkout
+	br = branch
+	b  = branch
+	ci = commit
+	st = status -sb
+	s  = status -sb
+	pr = pull --rebase
+	count = shortlog -sn
+	undo = reset --soft HEAD^
+	amend = commit --amend
+	unstage = reset HEAD --
+	credit = commit --amend --author "$1 <$2>"
+	last = log -1 HEAD
+	lg = log --oneline --decorate
+
+	head = rev-parse --abbrev-ref HEAD
+
+	# Fancy logging.
+	#   h = head
+	#   hp = head with patch
+	#   r = recent commits, only current branch
+	#   ra = recent commits, all reachable refs
+	#   l = all commits, only current branch
+	#   la = all commits, all reachable refs
+	head = !git l -1
+	h = !git head
+	hp = "!. ~/.githelpers && show_git_head"
+	r = !git l -30
+	ra = !git r --all
+	l = "!. ~/.githelpers && pretty_git_log"
+	la = !git l --all
+	b = "!. ~/.githelpers && pretty_git_branch"
+
+[core]
+	excludesfile = /Users/harry/.gitignore
+	ignorecase = false
+  pager = delta
+[delta]
+  navigate = true  # use n and N to move between diff sections
+[diff]
+	tool = nvimdiff
+  colormoved = default
+  colormovedws = allow-indentation-change
+[difftool]
+	prompt = false
+[push]
+	default = upstream
+	autoSetupRemote = true
+[help]
+	autocorrect = 1
+[interactive]
+  diffFilter = delta --color-only
+[log]
+  date = local
+[merge]
+  conflictstyle = zdiff3
+  tool = nvimdiff
+[mergetool]
+	keepBackup = true
+[rerere]
+	enabled = 1
+[filter "media"]
+	clean = git media clean %f
+	smudge = git media smudge %f
+	required = true
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	required = true
+	process = git-lfs filter-process
+[commit]
+	verbose = true
+[pull]
+	rebase = true
+	ff = only
+[init]
+	defaultBranch = main
+
+[tag]
+  sort = version:refname
+[versionsort]
+  suffix = "_BETA"
+  suffix = "_RC"
