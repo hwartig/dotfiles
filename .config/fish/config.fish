@@ -21,3 +21,6 @@ alias https="http --default-scheme=https"
 alias httpserver='ruby -run -e httpd . -p 1234'
 alias vi=nvim
 alias wiki="nvim -c':VimwikiIndex' -c'lcd %:h'"
+
+# Added by Windsurf
+fish_add_path /Users/harry/.codeium/windsurf/bin
