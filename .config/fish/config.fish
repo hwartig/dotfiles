@@ -13,6 +13,7 @@ fish_add_path "/Users/harry/.local/bin"
 
 # alias for dotfile repo management
 alias config='git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
+alias lazyconfig='lazygit --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 
 alias brewi="cat ~/Library/Caches/Homebrew/api/formula_names.txt | fzf --bind 'enter:become(brew info {})'"
 alias brewif="cat ~/Library/Caches/Homebrew/api/formula_names.txt | fzf --bind 'enter:execute(jq \".payload | fromjson | .[] | select(.name == \\\\"{}\\\\") | .name, .full_name, .desc, .homepage, .license, .versions.stable, .installed, .deprecated\" ~/Library/Caches/Homebrew/api/formula.jws.json)'"
